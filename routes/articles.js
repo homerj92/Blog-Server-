@@ -12,6 +12,7 @@ var article = require('../middlewares/currentArticle')
 router.get('/allArticle', auth.checkIfUserExists, function (req, res, next) {
   Article.find()
   .populate('Author Like Comment',  'Nickname  Text Owner -_id')
+  .sort({ Date:-1 })
   .exec(function (err, article) {
       if (err) return res.status(500).json({message: err})
       res.status(200).json(article)
