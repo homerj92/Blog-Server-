@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const CommentSchema = new Schema({
-  Owner: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  Owner: {type: Schema.Types.ObjectId, ref: 'User'},
   Text: { type: String, required: true},
 })
 
